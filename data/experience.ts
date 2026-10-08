@@ -17,7 +17,7 @@ export const experiences: ExperienceItem[] = [
     role: "Full Stack Development Intern",
     organization: "LEARNLOGICIFY",
     location: "Remote / Hybrid",
-    period: "JUNE 2025 — PRESENT",
+    period: "JUNE 2025",
     type: "ENGINEERING",
     description:
       "Developed responsive web applications, built reusable UI components, worked across frontend and backend systems, and contributed to application performance optimization.",
@@ -38,7 +38,7 @@ export const experiences: ExperienceItem[] = [
     role: "Full Stack Developer Intern",
     organization: "MERKISYS",
     location: "Coimbatore, India",
-    period: "6 MONTHS",
+    period: "April 2026 - PRESENT",
     type: "ENGINEERING",
     description:
       "Worked on a full-stack Customer & Document Automation Portal designed as a SaaS-style administrative platform to streamline customer management, project workflows, document processing, and automated PDF generation.",
