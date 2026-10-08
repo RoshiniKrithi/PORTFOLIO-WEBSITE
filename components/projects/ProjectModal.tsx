@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Project } from "@/data/projects";
 import ProjectVisualPreview from "./ProjectVisualPreview";
-import { X, CheckCircle2, Cpu, Wrench, BarChart2 } from "lucide-react";
+import { X, CheckCircle2, Cpu, Wrench, BarChart2, ExternalLink } from "lucide-react";
 import { useCursor } from "@/components/ui/CustomCursorContext";
 
 interface ProjectModalProps {
@@ -69,16 +69,37 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               <span>{project.category}</span>
             </div>
 
-            <button
-              type="button"
-              onClick={onClose}
-              onMouseEnter={() => setCursor("close", "CLOSE")}
-              onMouseLeave={resetCursor}
-              aria-label="Close modal"
-              className="p-2 text-neutral-400 hover:text-white hover:bg-white/10 rounded-full transition-colors"
-            >
-              <X size={20} />
-            </button>
+            <div className="flex items-center gap-3">
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (typeof window !== "undefined" && project.liveUrl) {
+                      window.open(project.liveUrl, "_blank", "noopener,noreferrer");
+                    }
+                  }}
+                  className="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-500/15 hover:bg-emerald-500/30 border border-emerald-500/40 hover:border-emerald-400 rounded-full text-[10px] font-mono tracking-widest text-emerald-300 hover:text-white uppercase transition-all cursor-pointer shadow-sm hover:shadow-emerald-500/30"
+                  title="Open Live Project"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  LIVE
+                  <ExternalLink size={11} />
+                </a>
+              )}
+              <button
+                type="button"
+                onClick={onClose}
+                onMouseEnter={() => setCursor("close", "CLOSE")}
+                onMouseLeave={resetCursor}
+                aria-label="Close modal"
+                className="p-2 text-neutral-400 hover:text-white hover:bg-white/10 rounded-full transition-colors"
+              >
+                <X size={20} />
+              </button>
+            </div>
           </div>
 
           {/* Scrollable Content */}
@@ -237,17 +258,37 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           </div>
 
           {/* Modal Footer */}
-          <div className="px-6 sm:px-8 py-4 border-t border-white/10 bg-[#0a0a0e] flex items-center justify-between">
+          <div className="px-6 sm:px-8 py-4 border-t border-white/10 bg-[#0a0a0e] flex items-center justify-between flex-wrap gap-4">
             <span className="font-mono text-[10px] text-neutral-500 tracking-wider">
               PRESS ESC OR CLICK OUTSIDE TO CLOSE
             </span>
-            <button
-              type="button"
-              onClick={onClose}
-              className="px-5 py-2 font-mono text-xs tracking-widest bg-white text-black hover:bg-neutral-200 transition-colors uppercase font-medium"
-            >
-              CLOSE CASE STUDY
-            </button>
+            <div className="flex items-center gap-3">
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (typeof window !== "undefined" && project.liveUrl) {
+                      window.open(project.liveUrl, "_blank", "noopener,noreferrer");
+                    }
+                  }}
+                  className="inline-flex items-center gap-2 px-4 py-2 font-mono text-xs tracking-widest bg-emerald-500/15 text-emerald-300 hover:text-white border border-emerald-500/40 hover:border-emerald-400 hover:bg-emerald-500/25 transition-all uppercase font-medium cursor-pointer shadow-sm hover:shadow-emerald-500/30"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  {project.liveUrl.includes("github.com") ? "VIEW ON GITHUB" : "VIEW LIVE DEMO"}
+                  <ExternalLink size={13} />
+                </a>
+              )}
+              <button
+                type="button"
+                onClick={onClose}
+                className="px-5 py-2 font-mono text-xs tracking-widest bg-white text-black hover:bg-neutral-200 transition-colors uppercase font-medium"
+              >
+                CLOSE CASE STUDY
+              </button>
+            </div>
           </div>
         </motion.div>
       </div>

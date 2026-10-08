@@ -18,7 +18,7 @@ export default function CurrentlySection() {
           <div>
             <div className="flex items-center gap-2.5 font-mono text-[11px] tracking-[0.25em] text-neutral-400 uppercase mb-2">
               <Sparkles size={13} className="text-emerald-400" />
-              <span>06 // ACTIVE RADAR</span>
+              <span>06</span>
             </div>
             <h2 className="font-editorial-heading text-3xl sm:text-4xl text-white uppercase tracking-tight">
               <ScrambleText text="CURRENTLY ENGAGED IN" duration={420} />

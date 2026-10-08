@@ -93,10 +93,8 @@ export default function ExperienceSection() {
                 >
                   {/* Header */}
                   <div>
-                    <div className="flex items-center gap-2.5 font-mono text-[11px] tracking-widest text-neutral-400 uppercase mb-2">
-                      <span className="text-white/40">TENURE</span>
-                      <span>//</span>
-                      <span className="text-emerald-400">{activeExp.period}</span>
+                    <div className="font-mono text-[11px] tracking-widest text-emerald-400 uppercase mb-2">
+                      {activeExp.period}
                     </div>
 
                     <h3 className="font-editorial-heading text-2xl sm:text-3xl md:text-4xl text-white uppercase mb-2">

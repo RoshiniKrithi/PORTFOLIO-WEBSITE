@@ -157,9 +157,6 @@ export default function Hero() {
           />
         </motion.a>
 
-        <div className="font-mono text-[9px] text-neutral-600 tracking-widest hidden md:block">
-          SYS.INDEX: 00 // EDITION 2026
-        </div>
       </div>
     </section>
   );

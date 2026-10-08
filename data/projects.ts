@@ -10,6 +10,8 @@ export interface Project {
   videoSrc?: string;
   imageSrc?: string;
   accentColor?: string;
+  liveUrl?: string;
+  githubUrl?: string;
   stats?: { label: string; value: string }[];
   caseStudy: {
     tagline: string;
@@ -51,6 +53,8 @@ export const projects: Project[] = [
     ],
     imageSrc: "/projects/leaf-disease.png",
     accentColor: "#10b981",
+    liveUrl: "https://github.com/RoshiniKrithi/POTATO_LEAF_DETECTION",
+    githubUrl: "https://github.com/RoshiniKrithi/POTATO_LEAF_DETECTION",
     stats: [
       { label: "MODEL ACCURACY", value: "97.4%" },
       { label: "INFERENCE TIME", value: "<85ms" },
@@ -119,6 +123,7 @@ export const projects: Project[] = [
     ],
     imageSrc: "/projects/code-arena.png",
     accentColor: "#38bdf8",
+    liveUrl: "https://contest-remainder-cnk7-git-main-roshini-krithis-projects.vercel.app/",
     stats: [
       { label: "PLATFORMS INTEGRATED", value: "6 Judges" },
       { label: "SYNC INTERVAL", value: "Real-time" },
@@ -188,6 +193,7 @@ export const projects: Project[] = [
     ],
     imageSrc: "/projects/eloria-luxe.png",
     accentColor: "#fbbf24",
+    liveUrl: "https://eloria-luxe.vercel.app/",
     stats: [
       { label: "LIGHTHOUSE SCORE", value: "98/100" },
       { label: "CHECKOUT LATENCY", value: "<1.2s" },
@@ -256,6 +262,8 @@ export const projects: Project[] = [
     ],
     imageSrc: "/projects/aura-gpt.png",
     accentColor: "#a855f7",
+    liveUrl: "https://github.com/RoshiniKrithi/Aura",
+    githubUrl: "https://github.com/RoshiniKrithi/Aura",
     stats: [
       { label: "VOCABULARY SIZE", value: "32K BPE Tokens" },
       { label: "RAG LATENCY", value: "<110ms" },

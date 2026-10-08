@@ -112,9 +112,9 @@ export default function CursorFollower() {
   const styles = getVariantStyles();
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-50 overflow-hidden">
+    <div className="pointer-events-none fixed inset-0 z-50 overflow-hidden select-none">
       <motion.div
-        className="fixed top-0 left-0 flex items-center justify-center rounded-full text-center select-none shadow-2xl"
+        className="pointer-events-none fixed top-0 left-0 flex items-center justify-center rounded-full text-center select-none shadow-2xl"
         style={{
           x: smoothX,
           y: smoothY,
@@ -134,7 +134,7 @@ export default function CursorFollower() {
         }}
       >
         {cursorText && (
-          <span className="font-mono text-[10px] font-bold tracking-widest uppercase px-1 text-black">
+          <span className="pointer-events-none font-mono text-[10px] font-bold tracking-widest uppercase px-1 text-black select-none">
             {cursorText}
           </span>
         )}

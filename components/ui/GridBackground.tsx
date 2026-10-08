@@ -30,10 +30,6 @@ export default function GridBackground() {
       {/* Subtle Noise Texture */}
       <div className="absolute inset-0 bg-noise opacity-30" />
 
-      {/* Editorial Technical Coordinates Watermark */}
-      <div className="absolute top-28 right-8 font-mono text-[9px] text-neutral-600 tracking-[0.25em] uppercase hidden xl:block">
-        SYS.GRID // LAT 11.0168° N / LNG 76.9558° E
-      </div>
     </div>
   );
 }

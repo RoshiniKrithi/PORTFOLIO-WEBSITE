@@ -6,7 +6,7 @@ import { Project } from "@/data/projects";
 import ProjectVisualPreview from "./ProjectVisualPreview";
 import ProjectTerminalDrawer from "./ProjectTerminalDrawer";
 import { useCursor } from "@/components/ui/CustomCursorContext";
-import { ArrowUpRight, Layers, Sparkles, Cpu } from "lucide-react";
+import { Layers, ExternalLink } from "lucide-react";
 
 interface ProjectCardProps {
   project: Project;
@@ -16,7 +16,6 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project, onSelect, index }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false);
-  const [viewMode, setViewMode] = useState<"PREVIEW" | "X-RAY">("PREVIEW");
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
   const [dispersion, setDispersion] = useState(0);
   const lastMouseRef = useRef({ x: 0, y: 0, time: performance.now() });
@@ -74,7 +73,7 @@ export default function ProjectCard({ project, onSelect, index }: ProjectCardPro
         }}
       />
 
-      {/* Top Meta Bar + Smooth Interactive View Mode Toggle */}
+      {/* Top Meta Bar */}
       <div className="relative z-10">
         <div className="flex items-center justify-between gap-4 mb-4 font-mono text-[11px] tracking-[0.2em] text-neutral-400 uppercase">
           <div className="flex items-center gap-2.5">
@@ -83,51 +82,36 @@ export default function ProjectCard({ project, onSelect, index }: ProjectCardPro
             <span className="text-neutral-300 font-medium">{project.category}</span>
           </div>
 
-          {/* Simple Tactile Sliding Toggle Pill */}
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="flex items-center p-0.5 bg-[#121218] border border-white/10 rounded-full"
-          >
-            <button
-              type="button"
-              onClick={() => setViewMode("PREVIEW")}
-              className={`relative px-2.5 py-1 text-[9px] font-mono tracking-widest uppercase transition-colors rounded-full ${
-                viewMode === "PREVIEW" ? "text-black font-bold" : "text-neutral-400 hover:text-white"
-              }`}
+          {/* Live Badge / Link */}
+          {project.liveUrl ? (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => {
+                e.stopPropagation();
+                if (typeof window !== "undefined" && project.liveUrl) {
+                  window.open(project.liveUrl, "_blank", "noopener,noreferrer");
+                }
+              }}
+              onMouseEnter={(e) => {
+                e.stopPropagation();
+                setCursor("link", "VIEW LIVE");
+              }}
+              onMouseLeave={() => setCursor("view", "CASE STUDY")}
+              className="relative z-30 inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-500/15 hover:bg-emerald-500/30 border border-emerald-500/40 hover:border-emerald-400 rounded-full text-[10px] font-mono tracking-widest text-emerald-300 hover:text-white uppercase transition-all duration-300 cursor-pointer shadow-sm hover:shadow-emerald-500/30 group/live pointer-events-auto"
+              title="Open Live Project"
             >
-              {viewMode === "PREVIEW" && (
-                <motion.div
-                  layoutId={`toggle-pill-${project.id}`}
-                  className="absolute inset-0 bg-white rounded-full shadow-sm"
-                  transition={{ type: "spring", stiffness: 480, damping: 34 }}
-                />
-              )}
-              <span className="relative z-10 flex items-center gap-1">
-                <Sparkles size={9} />
-                LIVE
-              </span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setViewMode("X-RAY")}
-              className={`relative px-2.5 py-1 text-[9px] font-mono tracking-widest uppercase transition-colors rounded-full ${
-                viewMode === "X-RAY" ? "text-black font-bold" : "text-neutral-400 hover:text-white"
-              }`}
-            >
-              {viewMode === "X-RAY" && (
-                <motion.div
-                  layoutId={`toggle-pill-${project.id}`}
-                  className="absolute inset-0 bg-cyan-300 rounded-full shadow-[0_0_10px_rgba(6,182,212,0.6)]"
-                  transition={{ type: "spring", stiffness: 480, damping: 34 }}
-                />
-              )}
-              <span className="relative z-10 flex items-center gap-1">
-                <Cpu size={9} />
-                X-RAY
-              </span>
-            </button>
-          </div>
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse group-hover/live:scale-125 transition-transform" />
+              <span className="font-semibold">LIVE</span>
+              <ExternalLink size={10} className="opacity-80 group-hover/live:opacity-100 group-hover/live:translate-x-0.5 transition-all" />
+            </a>
+          ) : (
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-white/[0.04] border border-white/10 rounded-full text-[9px] font-mono tracking-widest text-neutral-300 uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              LIVE
+            </div>
+          )}
         </div>
 
         {/* Project Title */}
@@ -141,12 +125,11 @@ export default function ProjectCard({ project, onSelect, index }: ProjectCardPro
         </p>
       </div>
 
-      {/* Visual / Video Preview Component with Direct Toggle Integration */}
+      {/* Visual / Video Preview Component */}
       <div className="my-2 relative z-10">
         <ProjectVisualPreview
           project={project}
           isHovered={isHovered}
-          isXRayActive={viewMode === "X-RAY"}
         />
       </div>
 
