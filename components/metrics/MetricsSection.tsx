@@ -65,9 +65,8 @@ export default function MetricsSection() {
             <button
               type="button"
               onClick={() => setMetricMode("RATINGS")}
-              className={`relative px-4 py-2 text-xs font-mono tracking-widest uppercase transition-colors rounded-full ${
-                metricMode === "RATINGS" ? "text-black font-bold" : "text-neutral-400 hover:text-white"
-              }`}
+              className={`relative px-4 py-2 text-xs font-mono tracking-widest uppercase transition-colors rounded-full ${metricMode === "RATINGS" ? "text-black font-bold" : "text-neutral-400 hover:text-white"
+                }`}
             >
               {metricMode === "RATINGS" && (
                 <motion.div
@@ -85,9 +84,8 @@ export default function MetricsSection() {
             <button
               type="button"
               onClick={() => setMetricMode("TELEMETRY")}
-              className={`relative px-4 py-2 text-xs font-mono tracking-widest uppercase transition-colors rounded-full ${
-                metricMode === "TELEMETRY" ? "text-black font-bold" : "text-neutral-400 hover:text-white"
-              }`}
+              className={`relative px-4 py-2 text-xs font-mono tracking-widest uppercase transition-colors rounded-full ${metricMode === "TELEMETRY" ? "text-black font-bold" : "text-neutral-400 hover:text-white"
+                }`}
             >
               {metricMode === "TELEMETRY" && (
                 <motion.div
@@ -128,9 +126,8 @@ export default function MetricsSection() {
                   setHoveredCard(null);
                   resetCursor();
                 }}
-                className={`relative p-7 sm:p-8 bg-[#0a0a0e] transition-all duration-500 flex flex-col justify-between group cursor-pointer ${
-                  isHovered ? "bg-[#111117]" : "hover:bg-[#0d0d12]"
-                }`}
+                className={`relative p-7 sm:p-8 bg-[#0a0a0e] transition-all duration-500 flex flex-col justify-between group cursor-pointer ${isHovered ? "bg-[#111117]" : "hover:bg-[#0d0d12]"
+                  }`}
               >
                 {/* Top Header */}
                 <div>
@@ -141,11 +138,10 @@ export default function MetricsSection() {
                     </div>
 
                     <span
-                      className={`font-mono text-[9px] tracking-widest px-2 py-0.5 rounded-none border transition-colors ${
-                        isTelemetry
-                          ? "border-emerald-500/30 text-emerald-400 bg-emerald-500/10"
-                          : "border-white/10 text-neutral-400 bg-white/[0.02]"
-                      }`}
+                      className={`font-mono text-[9px] tracking-widest px-2 py-0.5 rounded-none border transition-colors ${isTelemetry
+                        ? "border-emerald-500/30 text-emerald-400 bg-emerald-500/10"
+                        : "border-white/10 text-neutral-400 bg-white/[0.02]"
+                        }`}
                     >
                       {isTelemetry ? "TELEMETRY" : card.badge || "VERIFIED"}
                     </span>
@@ -167,9 +163,8 @@ export default function MetricsSection() {
                         <motion.div
                           animate={{ scale: isHovered ? 1.03 : 1 }}
                           transition={{ duration: 0.3 }}
-                          className={`font-editorial-heading text-4xl sm:text-5xl tracking-tight ${
-                            isTelemetry ? "text-emerald-300" : "text-white"
-                          }`}
+                          className={`font-editorial-heading text-4xl sm:text-5xl tracking-tight ${isTelemetry ? "text-emerald-300" : "text-white"
+                            }`}
                         >
                           {activeStat.value}
                         </motion.div>
@@ -253,9 +248,8 @@ export default function MetricsSection() {
 
                 {/* Subtle bottom active highlight line */}
                 <div
-                  className={`absolute bottom-0 left-0 right-0 h-[2px] transition-opacity duration-500 ${
-                    isHovered ? "opacity-100" : "opacity-0"
-                  }`}
+                  className={`absolute bottom-0 left-0 right-0 h-[2px] transition-opacity duration-500 ${isHovered ? "opacity-100" : "opacity-0"
+                    }`}
                   style={{
                     backgroundColor: isTelemetry ? "#10b981" : card.highlightColor || "#ffffff",
                   }}
@@ -265,14 +259,6 @@ export default function MetricsSection() {
           })}
         </div>
 
-        {/* Footnote / Toggle Hint */}
-        <div className="mt-8 flex flex-wrap items-center justify-between gap-4 font-mono text-[10px] text-neutral-500 tracking-wider uppercase">
-          <div>// ACTIVE CONTEST PARTICIPATION &amp; TIME-COMPLEXITY DISCIPLINE</div>
-          <div className="text-neutral-400 flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            CLICK ANY CARD OR TOGGLE TO SWITCH VIEW
-          </div>
-        </div>
       </div>
     </section>
   );

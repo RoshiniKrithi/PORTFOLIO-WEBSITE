@@ -24,9 +24,6 @@ export default function CurrentlySection() {
               <ScrambleText text="CURRENTLY ENGAGED IN" duration={420} />
             </h2>
           </div>
-          <p className="font-mono text-xs text-neutral-500 max-w-sm tracking-wide">
-            Key research areas, technical deep-dives, and active engineering experiments.
-          </p>
         </div>
 
         {/* Horizontal Editorial Grid / Cards */}

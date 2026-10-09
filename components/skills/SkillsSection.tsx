@@ -114,7 +114,6 @@ export default function SkillsSection() {
                         {getCategoryIcon(cat.id)}
                         <span>{cat.categoryNumber}</span>
                       </div>
-                      <span className="text-white/40">// SPEC</span>
                     </div>
 
                     <h3 className="font-editorial-heading text-xl sm:text-2xl text-white uppercase mb-2 group-hover:text-neutral-200 transition-colors">

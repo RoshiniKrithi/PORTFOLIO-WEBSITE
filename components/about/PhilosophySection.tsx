@@ -43,7 +43,7 @@ export default function PhilosophySection() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="md:col-span-4 font-mono text-xs text-neutral-400 tracking-widest uppercase"
             >
-              01 // THE APPROACH
+              THE APPROACH
             </motion.div>
 
             <motion.div

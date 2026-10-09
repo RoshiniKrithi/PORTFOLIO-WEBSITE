@@ -111,7 +111,7 @@ const INITIAL_EDGES: EdgeData[] = [
   { source: "pytorch", target: "nlp", strength: 0.8 },
   { source: "transformers", target: "nlp", strength: 0.85 },
   { source: "agentic_ai", target: "fastapi", strength: 0.8 },
-  
+
   // Web & Full-Stack Sub-network
   { source: "javascript", target: "react", strength: 0.95 },
   { source: "javascript", target: "nodejs", strength: 0.9 },
@@ -123,12 +123,12 @@ const INITIAL_EDGES: EdgeData[] = [
   { source: "nodejs", target: "sqlite", strength: 0.7 },
   { source: "postgresql", target: "sql", strength: 0.9 },
   { source: "sqlite", target: "sql", strength: 0.85 },
-  
+
   // Cross-Domain Bridges (AI to Web & Full-Stack)
   { source: "fastapi", target: "react", strength: 0.7 },
   { source: "fastapi", target: "postgresql", strength: 0.65 },
   { source: "python", target: "sql", strength: 0.6 },
-  
+
   // Core Systems & DSA Bridges
   { source: "cpp", target: "dsa", strength: 0.95 },
   { source: "cpp", target: "c", strength: 0.85 },
@@ -169,7 +169,7 @@ export default function NeuralSkillGraph() {
       const cfg = CATEGORY_CONFIG[node.category];
       const centerX = width * cfg.centroidXRatio;
       const centerY = height * cfg.centroidYRatio;
-      
+
       // Calculate clean radial offset within cluster
       const catNodes = INITIAL_NODES.filter((n) => n.category === node.category);
       const catIndex = catNodes.findIndex((n) => n.id === node.id);
@@ -359,7 +359,7 @@ export default function NeuralSkillGraph() {
       Object.entries(CATEGORY_CONFIG).forEach(([catKey, cfg]) => {
         const catNodes = nodes.filter((n) => n.category === catKey);
         if (catNodes.length === 0) return;
-        
+
         let avgX = 0;
         let avgY = 0;
         catNodes.forEach((n) => {
@@ -492,7 +492,7 @@ export default function NeuralSkillGraph() {
         // C. Core Circle
         ctx.beginPath();
         ctx.arc(node.x, node.y, currentRadius, 0, Math.PI * 2);
-        
+
         if (isHovered || isSelected) {
           ctx.fillStyle = "#0c0c14";
           ctx.strokeStyle = "#ffffff";
@@ -546,12 +546,12 @@ export default function NeuralSkillGraph() {
           ctx.rect(node.x - textWidth / 2 - 6, labelY - 8, textWidth + 12, 16);
         }
         ctx.fill();
-        
+
         ctx.strokeStyle = isHovered
           ? cfg.color
           : isDimmed
-          ? "rgba(255, 255, 255, 0.03)"
-          : "rgba(255, 255, 255, 0.08)";
+            ? "rgba(255, 255, 255, 0.03)"
+            : "rgba(255, 255, 255, 0.08)";
         ctx.lineWidth = 0.8;
         ctx.stroke();
 
@@ -639,7 +639,7 @@ export default function NeuralSkillGraph() {
       dragNodeRef.current = null;
       try {
         (e.target as HTMLElement).releasePointerCapture(e.pointerId);
-      } catch {}
+      } catch { }
     }
   };
 
@@ -680,43 +680,39 @@ export default function NeuralSkillGraph() {
         <div className="flex items-center gap-1.5 p-1 bg-[#0d0d12]/90 backdrop-blur-md border border-white/[0.08] rounded-sm text-xs font-mono">
           <button
             onClick={() => setActiveCategory("all")}
-            className={`px-3 py-1.5 transition-all uppercase tracking-wider text-[10px] ${
-              activeCategory === "all"
+            className={`px-3 py-1.5 transition-all uppercase tracking-wider text-[10px] ${activeCategory === "all"
                 ? "bg-white text-black font-semibold shadow-sm"
                 : "text-neutral-400 hover:text-white"
-            }`}
+              }`}
           >
             All Clusters ({INITIAL_NODES.length})
           </button>
           <button
             onClick={() => setActiveCategory("languages")}
-            className={`px-3 py-1.5 transition-all uppercase tracking-wider text-[10px] flex items-center gap-1.5 ${
-              activeCategory === "languages"
+            className={`px-3 py-1.5 transition-all uppercase tracking-wider text-[10px] flex items-center gap-1.5 ${activeCategory === "languages"
                 ? "bg-sky-500/20 text-sky-300 border border-sky-500/40"
                 : "text-neutral-400 hover:text-sky-300"
-            }`}
+              }`}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
             01 Languages
           </button>
           <button
             onClick={() => setActiveCategory("web-databases")}
-            className={`px-3 py-1.5 transition-all uppercase tracking-wider text-[10px] flex items-center gap-1.5 ${
-              activeCategory === "web-databases"
+            className={`px-3 py-1.5 transition-all uppercase tracking-wider text-[10px] flex items-center gap-1.5 ${activeCategory === "web-databases"
                 ? "bg-amber-500/20 text-amber-300 border border-amber-500/40"
                 : "text-neutral-400 hover:text-amber-300"
-            }`}
+              }`}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
             02 Web & DB
           </button>
           <button
             onClick={() => setActiveCategory("aiml-core")}
-            className={`px-3 py-1.5 transition-all uppercase tracking-wider text-[10px] flex items-center gap-1.5 ${
-              activeCategory === "aiml-core"
+            className={`px-3 py-1.5 transition-all uppercase tracking-wider text-[10px] flex items-center gap-1.5 ${activeCategory === "aiml-core"
                 ? "bg-purple-500/20 text-purple-300 border border-purple-500/40"
                 : "text-neutral-400 hover:text-purple-300"
-            }`}
+              }`}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
             03 AI/ML & Core
@@ -756,7 +752,6 @@ export default function NeuralSkillGraph() {
       {/* Tactical Hint Overlay (Bottom Left) */}
       <div className="absolute bottom-4 left-4 z-20 pointer-events-none hidden sm:flex items-center gap-2 px-3 py-2 bg-[#09090e]/80 backdrop-blur-md border border-white/[0.06] rounded-sm font-mono text-[10px] text-neutral-400">
         <Move size={12} className="text-neutral-500" />
-        <span>DRAG TO DISTORT SYNAPSES // HOVER FOR TELEMETRY</span>
       </div>
 
       {/* Active Node Inspector Telemetry Card (Bottom Right HUD) */}

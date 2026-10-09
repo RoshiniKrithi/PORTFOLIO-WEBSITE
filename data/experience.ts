@@ -16,7 +16,7 @@ export const experiences: ExperienceItem[] = [
     id: "learnlogicify",
     role: "Full Stack Development Intern",
     organization: "LEARNLOGICIFY",
-    location: "Remote / Hybrid",
+    location: "Coimbatore,India",
     period: "JUNE 2025",
     type: "ENGINEERING",
     description:
